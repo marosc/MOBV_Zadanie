@@ -1,5 +1,6 @@
 package eu.mcomputing.mobv.mobvzadanie
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -15,6 +16,8 @@ class MainActivity : AppCompatActivity() {
         myButton.setOnClickListener {
             // Kód, ktorý sa vykoná po kliknutí na tlačidlo
             Log.d("Mojtag", "klik")
+            val intent = Intent(this, InputActivity::class.java)
+            startActivity(intent)
         }
     }
 
