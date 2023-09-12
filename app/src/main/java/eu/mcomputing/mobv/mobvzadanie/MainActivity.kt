@@ -1,25 +1,26 @@
 package eu.mcomputing.mobv.mobvzadanie
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+//     binding = ActivityMainBinding.inflate(layoutInflater)
+//     setContentView(binding.root)
         setContentView(R.layout.activity_main)
-        Log.d("Mojtag", "moja info")
 
-        val myButton: Button = findViewById(R.id.button1)
-        myButton.setOnClickListener {
-            // Kód, ktorý sa vykoná po kliknutí na tlačidlo
-            Log.d("Mojtag", "klik")
-            val intent = Intent(this, InputActivity::class.java)
-            startActivity(intent)
-        }
+//        val navView: BottomNavigationView = findViewById(R.id.nav_view)
+//
+//        val navController = findNavController(R.id.nav_host_fragment_activity_main)
+//        // Passing each menu ID as a set of Ids because each
+//        // menu should be considered as top level destinations.
+//        val appBarConfiguration = AppBarConfiguration(setOf(
+//            R.id.loginFragment, R.id.introFragment, R.id.signupFragment))
+//        setupActionBarWithNavController(navController, appBarConfiguration)
+//        navView.setupWithNavController(navController)
     }
-
-
 }
