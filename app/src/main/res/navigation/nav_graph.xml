@@ -5,11 +5,6 @@
     app:startDestination="@+id/introFragment">
 
     <fragment
-        android:id="@+id/loginFragment"
-        android:name="eu.mcomputing.mobv.mobvzadanie.LoginFragment"
-        android:label="LoginFragment"></fragment>
-
-    <fragment
         android:id="@+id/introFragment"
         android:name="eu.mcomputing.mobv.mobvzadanie.IntroFragment"
         android:label="IntroFragment">
@@ -23,7 +18,27 @@
     </fragment>
 
     <fragment
+        android:id="@+id/loginFragment"
+        android:name="eu.mcomputing.mobv.mobvzadanie.LoginFragment"
+        android:label="LoginFragment">
+        <action
+            android:id="@+id/action_login_feed"
+            app:destination="@id/feedFragment" />
+    </fragment>
+
+    <fragment
         android:id="@+id/signupFragment"
         android:name="eu.mcomputing.mobv.mobvzadanie.SignupFragment"
-        android:label="SignupFragment" />
+        android:label="SignupFragment">
+        <action
+            android:id="@+id/action_signup_feed"
+            app:destination="@id/feedFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/feedFragment"
+        android:name="eu.mcomputing.mobv.mobvzadanie.FeedFragment"
+        android:label="FeedFragment" />
+
+
 </navigation>

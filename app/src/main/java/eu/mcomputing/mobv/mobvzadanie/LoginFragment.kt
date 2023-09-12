@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 
 class LoginFragment : Fragment(R.layout.fragment_login) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -12,9 +13,9 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         view.findViewById<Button>(R.id.submit_button).apply {
             setOnClickListener {
                 val username: String =
-                    findViewById<EditText>(R.id.edit_text_username).text.toString()
+                    view.findViewById<EditText>(R.id.edit_text_username).text.toString()
                 val password: String =
-                    findViewById<EditText>(R.id.edit_text_password).text.toString()
+                    view.findViewById<EditText>(R.id.edit_text_password).text.toString()
                 login(username, password)
             }
         }
@@ -22,6 +23,6 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     }
 
     private fun login(username: String, password: String) {
-
+        findNavController().navigate(R.id.action_login_feed)
     }
 }
