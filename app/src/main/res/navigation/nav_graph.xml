@@ -40,5 +40,26 @@
         android:name="eu.mcomputing.mobv.mobvzadanie.FeedFragment"
         android:label="FeedFragment" />
 
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="eu.mcomputing.mobv.mobvzadanie.MapFragment"
+        android:label="MapFragment" />
 
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="eu.mcomputing.mobv.mobvzadanie.ProfileFragment"
+        android:label="ProfileFragment" />
+
+
+    <action
+        android:id="@+id/action_to_feed"
+        app:destination="@id/feedFragment" />
+
+    <action
+        android:id="@+id/action_to_map"
+        app:destination="@id/mapFragment" />
+
+    <action
+        android:id="@+id/action_to_profile"
+        app:destination="@id/profileFragment" />
 </navigation>

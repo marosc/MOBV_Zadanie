@@ -4,10 +4,11 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 
-class FeedFragment : Fragment(R.layout.fragment_feed) {
+class ProfileFragment : Fragment(R.layout.fragment_profile) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<BottomBar>(R.id.bottom_bar).setActive(BottomBar.FEED)
+        view.findViewById<BottomBar>(R.id.bottom_bar).setActive(BottomBar.PROFILE)
+
     }
 }
