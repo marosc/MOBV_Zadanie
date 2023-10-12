@@ -18,9 +18,9 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
         recyclerView.adapter = feedAdapter
         feedAdapter.updateItems(
             listOf(
-                MyItem(R.drawable.baseline_feed_24, "Prvy"),
-                MyItem(R.drawable.baseline_map_24, "Druhy"),
-                MyItem(R.drawable.baseline_account_box_24, "Treti"),
+                MyItem(0, R.drawable.baseline_feed_24, "Prvy"),
+                MyItem(1, R.drawable.baseline_map_24, "Druhy"),
+                MyItem(2, R.drawable.baseline_account_box_24, "Treti"),
             )
         )
 
