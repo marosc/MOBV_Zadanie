@@ -1,10 +1,8 @@
 package eu.mcomputing.mobv.mobvzadanie
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -24,21 +22,20 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
         recyclerView.layoutManager = LinearLayoutManager(context)
         val feedAdapter = FeedAdapter()
         recyclerView.adapter = feedAdapter
-        feedAdapter.updateItems(
+
+        // Pozorovanie zmeny hodnoty
+        viewModel.feed_items.observe(viewLifecycleOwner) { items ->
+            // Tu môžete aktualizovať UI podľa hodnoty stringValue
+            feedAdapter.updateItems(items)
+        }
+
+        viewModel.updateItems(
             listOf(
                 MyItem(0, R.drawable.baseline_feed_24, "Prvy"),
                 MyItem(1, R.drawable.baseline_map_24, "Druhy"),
                 MyItem(2, R.drawable.baseline_account_box_24, "Treti"),
             )
         )
-
-        // Pozorovanie zmeny hodnoty
-        viewModel.sampleString.observe(viewLifecycleOwner, Observer { stringValue ->
-            // Tu môžete aktualizovať UI podľa hodnoty stringValue
-            Log.d("FeedFragment", "novy text: $stringValue")
-        })
-
-        viewModel.updateString("zmena textu")
 
     }
 }
