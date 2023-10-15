@@ -1,7 +1,8 @@
-package eu.mcomputing.mobv.mobvzadanie
+package eu.mcomputing.mobv.mobvzadanie.fragments
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import eu.mcomputing.mobv.mobvzadanie.R
 
 
 class MainActivity : AppCompatActivity() {

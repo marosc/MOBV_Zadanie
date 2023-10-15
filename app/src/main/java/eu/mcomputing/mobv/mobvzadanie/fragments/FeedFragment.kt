@@ -1,4 +1,4 @@
-package eu.mcomputing.mobv.mobvzadanie
+package eu.mcomputing.mobv.mobvzadanie.fragments
 
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import eu.mcomputing.mobv.mobvzadanie.R
+import eu.mcomputing.mobv.mobvzadanie.adapters.FeedAdapter
+import eu.mcomputing.mobv.mobvzadanie.viewmodels.FeedViewModel
+import eu.mcomputing.mobv.mobvzadanie.widgets.bottomBar.BottomBar
 
 class FeedFragment : Fragment(R.layout.fragment_feed) {
     private lateinit var viewModel: FeedViewModel
