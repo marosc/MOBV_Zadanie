@@ -1,7 +1,9 @@
 package eu.mcomputing.mobv.mobvzadanie
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -25,17 +27,13 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
 
         // Pozorovanie zmeny hodnoty
         viewModel.feed_items.observe(viewLifecycleOwner) { items ->
-            // Tu môžete aktualizovať UI podľa hodnoty stringValue
+            Log.d("FeedFragment", "nove hodnoty $items")
             feedAdapter.updateItems(items)
         }
 
-        viewModel.updateItems(
-            listOf(
-                MyItem(0, R.drawable.baseline_feed_24, "Prvy"),
-                MyItem(1, R.drawable.baseline_map_24, "Druhy"),
-                MyItem(2, R.drawable.baseline_account_box_24, "Treti"),
-            )
-        )
+        view.findViewById<Button>(R.id.btn_generate).setOnClickListener {
+            viewModel.updateItems()
+        }
 
     }
 }
