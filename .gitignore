@@ -8,3 +8,4 @@
 .externalNativeBuild
 .cxx
 local.properties
+/app/src/main/java/eu/mcomputing/mobv/mobvzadanie/config/AppConfig.kt
