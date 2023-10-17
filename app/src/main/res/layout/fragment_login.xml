@@ -4,6 +4,9 @@
 
     <data>
 
+        <variable
+            name="model"
+            type="eu.mcomputing.mobv.mobvzadanie.viewmodels.AuthViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -40,6 +43,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="@string/zadajte_username"
+            android:text="@={model.username}"
             app:layout_constraintTop_toBottomOf="@+id/label_username"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -57,6 +61,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="@string/zadajte_heslo"
+            android:text="@={model.password}"
             app:layout_constraintTop_toBottomOf="@+id/label_password"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -66,6 +71,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/prihlasit_sa"
+            android:onClick="@{()->model.loginUser()}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
