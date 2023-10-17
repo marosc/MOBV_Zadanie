@@ -27,12 +27,12 @@ class SignupFragment : Fragment(R.layout.fragment_signup) {
         })[AuthViewModel::class.java]
 
         viewModel.registrationResult.observe(viewLifecycleOwner) {
-            if (it.second != null) {
+            if (it.isEmpty()) {
                 requireView().findNavController().navigate(R.id.action_signup_feed)
             } else {
                 Snackbar.make(
                     view.findViewById(R.id.submit_button),
-                    it.first,
+                    it,
                     Snackbar.LENGTH_SHORT
                 ).show()
             }
@@ -43,7 +43,7 @@ class SignupFragment : Fragment(R.layout.fragment_signup) {
                 viewModel.registerUser(
                     view.findViewById<EditText>(R.id.edit_text_username).text.toString(),
                     view.findViewById<EditText>(R.id.edit_text_email).text.toString(),
-                    view.findViewById<EditText>(R.id.edit_text_email).text.toString()
+                    view.findViewById<EditText>(R.id.edit_text_password).text.toString()
                 )
             }
         }
