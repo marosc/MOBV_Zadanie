@@ -15,4 +15,7 @@
     <string name="zopakujte_heslo">Zopakujte heslo</string>
     <string name="registruj_sa">Registruj sa</string>
     <string name="prihlasit_sa">Prihlasit sa</string>
+    <string name="profile">Profile</string>
+    <string name="nacitaj_profil">Nacitaj profil</string>
+    <string name="odhlasit_sa">Odhlasit sa</string>
 </resources>
