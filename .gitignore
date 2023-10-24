@@ -8,4 +8,5 @@
 .externalNativeBuild
 .cxx
 local.properties
+/app/src/main/res/values/strings_mapbox.xml
 /app/src/main/java/eu/mcomputing/mobv/mobvzadanie/config/AppConfig.kt
