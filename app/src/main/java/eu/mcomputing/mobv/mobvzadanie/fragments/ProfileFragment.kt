@@ -44,7 +44,6 @@ class ProfileFragment : Fragment() {
                 Manifest.permission.ACCESS_BACKGROUND_LOCATION
             )
         }
-
         else -> {
             arrayOf(
                 Manifest.permission.ACCESS_FINE_LOCATION,
@@ -55,7 +54,7 @@ class ProfileFragment : Fragment() {
 
     val requestPermissionLauncher =
         registerForActivityResult(
-            ActivityResultContracts.RequestMultiplePermissions()
+            ActivityResultContracts.RequestPermission()
         ) {
 
         }
@@ -132,17 +131,25 @@ class ProfileFragment : Fragment() {
         Log.d("ProfileFragment", "turnOnSharing")
         if (!hasPermissions(requireContext())) {
             binding.locationSwitch.isChecked = false
-            requestPermissionLauncher.launch(PERMISSIONS_REQUIRED)
+            for (p in PERMISSIONS_REQUIRED) {
+                requestPermissionLauncher.launch(p)
+            }
             return
         }
         PreferenceData.getInstance().putSharing(requireContext(), true)
 
         val fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
+
         fusedLocationClient.lastLocation.addOnSuccessListener(requireActivity()) {
             // Logika pre prácu s poslednou polohou
-            Log.d("ProfileFragment", "poloha posledna $it")
-            setupGeofence(it)
+            Log.d("ProfileFragment", "poloha posledna ${it ?: "-"}")
+            if (it == null) {
+                Log.e("ProfileFragment", "poloha neznama geofence nevytvoreny")
+            } else {
+                setupGeofence(it)
+            }
         }
+
     }
 
     private fun turnOffSharing() {
@@ -168,10 +175,10 @@ class ProfileFragment : Fragment() {
             .addGeofence(geofence)
             .build()
 
-        val intent = Intent(requireContext(), GeofenceBroadcastReceiver::class.java)
+        val intent = Intent(requireActivity(), GeofenceBroadcastReceiver::class.java)
         val geofencePendingIntent =
             PendingIntent.getBroadcast(
-                requireContext(),
+                requireActivity(),
                 0,
                 intent,
                 PendingIntent.FLAG_UPDATE_CURRENT
@@ -181,6 +188,7 @@ class ProfileFragment : Fragment() {
             addOnSuccessListener {
                 // Geofences boli úspešne pridané
                 Log.d("ProfileFragment", "geofence vytvoreny")
+                viewModel.updateGeofence(location.latitude, location.longitude, 100.0)
             }
             addOnFailureListener {
                 // Chyba pri pridaní geofences
@@ -193,8 +201,10 @@ class ProfileFragment : Fragment() {
     }
 
     private fun removeGeofence() {
+        Log.d("ProfileFragment", "geofence zruseny")
         val geofencingClient = LocationServices.getGeofencingClient(requireActivity())
         geofencingClient.removeGeofences(listOf("my-geofence"))
+        viewModel.removeGeofence()
 
     }
 }
