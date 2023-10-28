@@ -53,7 +53,7 @@ interface ApiService {
     suspend fun updateGeofence(@Body body: GeofenceUpdateRequest): Response<GeofenceUpdateResponse>
 
     @DELETE("geofence/update.php")
-    suspend fun deleteGeofence(): Response<List<GeofenceUpdateResponse>>
+    suspend fun deleteGeofence(): Response<GeofenceUpdateResponse>
 
     companion object {
         fun create(context: Context): ApiService {
