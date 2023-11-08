@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
-import eu.mcomputing.mobv.mobvzadanie.data.api.DataRepository
+import eu.mcomputing.mobv.mobvzadanie.data.DataRepository
 import eu.mcomputing.mobv.mobvzadanie.data.db.entities.UserEntity
 import eu.mcomputing.mobv.mobvzadanie.utils.Evento
 import kotlinx.coroutines.launch
@@ -15,7 +15,7 @@ class FeedViewModel(private val repository: DataRepository) : ViewModel() {
     val feed_items: LiveData<List<UserEntity>?> =
         liveData {
             loading.postValue(true)
-            repository.apiListGeofence()
+            repository.apiGeofenceUsers()
             loading.postValue(false)
             emitSource(repository.getUsers())
         }
@@ -29,7 +29,7 @@ class FeedViewModel(private val repository: DataRepository) : ViewModel() {
     fun updateItems() {
         viewModelScope.launch {
             loading.postValue(true)
-            _message.postValue(Evento(repository.apiListGeofence()))
+            _message.postValue(Evento(repository.apiGeofenceUsers()))
             loading.postValue(false)
         }
     }

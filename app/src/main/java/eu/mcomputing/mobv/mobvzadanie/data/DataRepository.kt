@@ -1,6 +1,7 @@
-package eu.mcomputing.mobv.mobvzadanie.data.api
+package eu.mcomputing.mobv.mobvzadanie.data
 
 import android.content.Context
+import eu.mcomputing.mobv.mobvzadanie.data.api.ApiService
 import eu.mcomputing.mobv.mobvzadanie.data.api.model.UserLoginRequest
 import eu.mcomputing.mobv.mobvzadanie.data.api.model.UserRegistrationRequest
 import eu.mcomputing.mobv.mobvzadanie.data.db.AppRoomDatabase
@@ -117,7 +118,15 @@ class DataRepository private constructor(
 
             if (response.isSuccessful) {
                 response.body()?.let {
-                    return Pair("", User(it.name, "", it.id, "", "", it.photo))
+                    val user = User(it.name, "", it.id, "", "", it.photo)
+                    cache.insertUserItems(
+                        listOf(
+                            UserEntity(
+                                user.id, user.username, "", 0.0, 0.0, 0.0, ""
+                            )
+                        )
+                    )
+                    return Pair("", user)
                 }
             }
 
@@ -131,31 +140,34 @@ class DataRepository private constructor(
         return Pair("Fatal error. Failed to load user.", null)
     }
 
-    suspend fun apiListGeofence(): String {
+    suspend fun apiGeofenceUsers(): String {
         try {
             val response = service.listGeofence()
 
             if (response.isSuccessful) {
-                response.body()?.let {
-                    val users = it.map {
+                response.body()?.let { resp ->
+                    val users = resp.list.map {
                         UserEntity(
                             it.uid, it.name, it.updated,
-                            it.lat, it.lon, it.radius, it.photo
+                            resp.me.lat, resp.me.lon, it.radius,
+                            it.photo
                         )
                     }
+
                     cache.insertUserItems(users)
+
                     return ""
                 }
             }
 
-            return "Failed to load users"
+            return "Failed to load user"
         } catch (ex: IOException) {
             ex.printStackTrace()
-            return "Check internet connection. Failed to load users."
+            return "Check internet connection. Failed to load user."
         } catch (ex: Exception) {
             ex.printStackTrace()
         }
-        return "Fatal error. Failed to load users."
+        return "Fatal error. Failed to load user."
     }
 
     fun getUsers() = cache.getUsers()

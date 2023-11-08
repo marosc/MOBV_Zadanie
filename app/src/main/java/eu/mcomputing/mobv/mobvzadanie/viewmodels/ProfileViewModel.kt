@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import eu.mcomputing.mobv.mobvzadanie.data.api.DataRepository
+import eu.mcomputing.mobv.mobvzadanie.data.DataRepository
 import eu.mcomputing.mobv.mobvzadanie.data.model.User
 import kotlinx.coroutines.launch
 

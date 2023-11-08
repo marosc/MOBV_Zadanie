@@ -13,8 +13,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.google.android.material.snackbar.Snackbar
 import eu.mcomputing.mobv.mobvzadanie.R
+import eu.mcomputing.mobv.mobvzadanie.data.DataRepository
 import eu.mcomputing.mobv.mobvzadanie.data.PreferenceData
-import eu.mcomputing.mobv.mobvzadanie.data.api.DataRepository
 import eu.mcomputing.mobv.mobvzadanie.databinding.FragmentProfileBinding
 import eu.mcomputing.mobv.mobvzadanie.viewmodels.ProfileViewModel
 import eu.mcomputing.mobv.mobvzadanie.widgets.bottomBar.BottomBar

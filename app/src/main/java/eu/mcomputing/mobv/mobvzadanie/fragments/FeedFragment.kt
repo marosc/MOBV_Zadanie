@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import eu.mcomputing.mobv.mobvzadanie.R
 import eu.mcomputing.mobv.mobvzadanie.adapters.FeedAdapter
-import eu.mcomputing.mobv.mobvzadanie.data.api.DataRepository
+import eu.mcomputing.mobv.mobvzadanie.data.DataRepository
 import eu.mcomputing.mobv.mobvzadanie.databinding.FragmentFeedBinding
 import eu.mcomputing.mobv.mobvzadanie.viewmodels.FeedViewModel
 import eu.mcomputing.mobv.mobvzadanie.widgets.bottomBar.BottomBar
